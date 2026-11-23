@@ -1,9 +1,9 @@
 public import Quantity
 
 extension Tagged::Tagged where Tag == Time.Duration, Underlying: FloatingPoint {
-    /// How often something repeats that takes this long once: a frequency.
+    /// How often something repeats that takes this long once: a frequency, one over this duration.
     @inlinable
-    public static func / (lhs: Underlying, rhs: Self) -> Frequency.Value<Underlying> {
-        Frequency.hertz(lhs / rhs.underlying)
+    public var frequency: Frequency.Value<Underlying> {
+        Frequency.hertz(1 / underlying)
     }
 }

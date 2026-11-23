@@ -16,9 +16,9 @@ extension `Frequency Tests` {
 
     @Suite struct `A frequency is one over a duration` {
         @Test func `One over a duration, and back`() {
-            let frequency = 1.0 / Time.Duration.seconds(0.5)
+            let frequency = Time.Duration.seconds(0.5).frequency
             #expect(frequency == Frequency.hertz(2.0))
-            #expect(1.0 / frequency == Time.Duration.seconds(0.5))
+            #expect(frequency.period == Time.Duration.seconds(0.5))
         }
 
         @Test func `An angular frequency is two pi times a frequency, both ways`() {
